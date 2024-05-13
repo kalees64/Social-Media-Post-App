@@ -33,7 +33,7 @@ const myPost = async (req, res) => {
   const { id } = req.params;
   try {
     const findPost = await posts.find({ userId: id });
-    res.json(findPost);
+    res.json(findPost.reverse());
   } catch (error) {
     res.json(error);
   }
