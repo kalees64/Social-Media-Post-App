@@ -23,6 +23,6 @@ app.use("/auth", authRoute);
 app.use("/postapp", postRoute);
 
 app.listen(PORT, () => {
-  console.log(`server is running on ${PORT}`);
+  // console.log(`server is running on ${PORT}`);
   connectDB();
 });
