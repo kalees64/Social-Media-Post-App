@@ -1,11 +1,24 @@
-import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import DataContext from "../context/DataContext";
 
-const CreatePost = () => {
+const EditPost = () => {
+  const {
+    handleProfile,
+    editTitle,
+    setEditTitle,
+    editText,
+    setEditText,
+    handleEdit,
+    handleEditPage,
+  } = useContext(DataContext);
+  const { id } = useParams();
   const location = useLocation();
-  const { handleProfile, title, setTitle, text, setText, handleCreate } =
-    useContext(DataContext);
+  //   console.log(location.state);
+  useEffect(() => {
+    handleEditPage(id);
+  }, []);
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div className=" bg-white d-flex p-3 justify-content-between align-items-center position-sticky   ">
@@ -30,32 +43,31 @@ const CreatePost = () => {
           className=" p-3 "
           onSubmit={(e) => {
             e.preventDefault();
-            handleCreate(location.state);
+            handleEdit(id, location.state);
           }}
         >
           <div className="card">
             <div className=" card-header ">
-              <h1>Create Post</h1>
+              <h1>Edit Post</h1>
             </div>
             <div className=" card-body p-3 d-flex flex-column gap-3 ">
               <input
                 type="text"
                 placeholder="Title"
                 className=" form-control "
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
               />
               <textarea
                 rows={3}
                 cols={10}
                 className=" form-control "
-                placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam culpa itaque, illum, et officia rerum nobis, ipsam provident unde illo laudantium quam neque necessitatibus praesentium dignissimos! Ipsum qui, quaerat cumque pariatur earum autem iusto deleniti minus facere doloribus odit magni sit quasi voluptas quam veniam?"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
               ></textarea>
               <input
                 type="submit"
-                value="Create"
+                value="Update"
                 className="btn btn-outline-success form-control  "
               />
             </div>
@@ -66,4 +78,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default EditPost;

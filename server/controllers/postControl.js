@@ -39,6 +39,16 @@ const myPost = async (req, res) => {
   }
 };
 
+const getPost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const findPost = await posts.findById(id);
+    res.json(findPost);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 const deletePost = async (req, res) => {
   const { id } = req.params;
   try {
@@ -49,4 +59,19 @@ const deletePost = async (req, res) => {
   }
 };
 
-module.exports = { addPosts, allPosts, myPost, deletePost };
+const editPost = async (req, res) => {
+  const { id } = req.params;
+  const { getTitle, getMsg } = req.body;
+  try {
+    const updatePost = await posts.findByIdAndUpdate(id, {
+      postTitle: getTitle,
+      postMsg: getMsg,
+    });
+    const updatedPost = await posts.findById(id);
+    res.json(updatedPost);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+module.exports = { addPosts, allPosts, myPost, deletePost, getPost, editPost };

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import DataContext from "../context/DataContext";
 
-const Home = ({ handleProfile, handleCreatePost, posts }) => {
+const Home = () => {
+  const { handleProfile, handleCreatePost, posts } = useContext(DataContext);
   const location = useLocation();
 
   return (
@@ -66,13 +68,22 @@ const Home = ({ handleProfile, handleCreatePost, posts }) => {
                 <div className=" card-body ">
                   <p>{post.postMsg}</p>
                   <div>
-                    <button className=" btn">
+                    <button
+                      className=" btn"
+                      onClick={() => alert("Coming Soon...")}
+                    >
                       <i className="bi bi-heart"></i>
                     </button>
-                    <button className=" btn">
+                    <button
+                      className=" btn"
+                      onClick={() => alert("Coming Soon...")}
+                    >
                       <i className="bi bi-chat-text"></i>
                     </button>
-                    <button className=" btn">
+                    <button
+                      className=" btn"
+                      onClick={() => alert("Coming Soon...")}
+                    >
                       <i className="bi bi-share"></i>
                     </button>
                   </div>

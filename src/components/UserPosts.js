@@ -1,15 +1,11 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import DataContext from "../context/DataContext";
 
-const UserPosts = ({
-  handleProfile,
-  handleCreatePost,
-  posts,
-  handleHome,
-  handleDelete,
-}) => {
+const UserPosts = () => {
   const location = useLocation();
-  //   console.log(posts);
+  const { handleProfile, handleCreatePost, myPosts, handleHome, handleDelete } =
+    useContext(DataContext);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div className=" bg-white d-flex p-3 justify-content-between align-items-center position-sticky   ">
@@ -65,8 +61,8 @@ const UserPosts = ({
             </div>
           </div>
         </div> */}
-        {posts.length > 0 ? (
-          posts.map((post) => {
+        {myPosts.length > 0 ? (
+          myPosts.map((post) => {
             return (
               <div className="card m-2" key={post._id}>
                 <div className=" card-header d-flex justify-content-between flex-wrap  ">
@@ -79,13 +75,13 @@ const UserPosts = ({
                 <div className=" card-body ">
                   <p>{post.postMsg}</p>
                   <div>
-                    <button
-                      className=" btn"
-                      onClick={() => {
-                        alert("Will be Update Soon");
-                      }}
-                    >
-                      <i className="bi bi-pencil-square text-primary "></i>
+                    <button className=" btn">
+                      <Link
+                        to={`/home/profile/myposts/${post._id}`}
+                        state={location.state}
+                      >
+                        <i className="bi bi-pencil-square text-primary "></i>
+                      </Link>
                     </button>
                     <button
                       className=" btn"

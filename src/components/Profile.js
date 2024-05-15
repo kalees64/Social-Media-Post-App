@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import person from "../assets/person-circle.svg";
+import DataContext from "../context/DataContext";
 
-const Profile = ({ handleHome, handleMyPosts }) => {
+const Profile = () => {
+  const { handleHome, handleMyPosts } = useContext(DataContext);
   const location = useLocation();
   return (
     <div

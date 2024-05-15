@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import DataContext from "../context/DataContext";
 
-const Login = ({ getMail, setGetMail, getPass, setGetPass, handleLogin }) => {
+const Login = () => {
+  const { getMail, setGetMail, getPass, setGetPass, handleLogin } =
+    useContext(DataContext);
   return (
     <div
       className=" d-flex flex-column justify-content-center align-items-center "
