@@ -15,4 +15,6 @@ Developed and Deployed by Kaleeswaran V
     2. Express
     3. Mongo DB
 
-Application link will be update shortly
+### Application Link
+
+    https://social-media-post-app.onrender.com/
