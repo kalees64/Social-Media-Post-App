@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
-  const API_URL = "https://social-media-post-app.onrender.com";
+  const API_URL = "https://social-media-post-app-server.onrender.com";
   const [getName, setGetName] = useState("");
   const [getMail, setGetMail] = useState("");
   const [getPass, setGetPass] = useState("");
